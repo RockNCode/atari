@@ -1,3 +1,6 @@
 machines
 dasm
 *.out
+games
+.DS_Store
+*.bin
