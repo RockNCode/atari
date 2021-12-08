@@ -21,6 +21,7 @@ MemLoop:
     STA $0,X    ; Store the value of A at memory address $0 + X
     DEX         ; X--
     BNE MemLoop ; if x != 0 go to MemLoop (z flag is set)
+    STA $0      ; Store 0 at address zero to avoid off by one
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Fill the ROM size to 4kb
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
