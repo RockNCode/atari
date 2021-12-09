@@ -2,5 +2,8 @@ machines
 dasm
 *.out
 games
-.DS_Store
 *.bin
+macro.h
+vcs.h
+*.lst
+*.sym
