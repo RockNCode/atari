@@ -7,3 +7,4 @@ macro.h
 vcs.h
 *.lst
 *.sym
+*.code-workspace
