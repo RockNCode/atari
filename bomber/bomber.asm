@@ -61,9 +61,8 @@ Reset:
     sta BomberYPos           ; BomberYPos = 83
     lda #%11010100
     sta Random               ; Random = $D4
-    lda #4
+    lda #0
     sta Score                ; Score = 0
-    lda #8
     sta Timer                ; Timer = 0
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -336,7 +335,8 @@ UpdateBomberPosition:
     jmp EndPositionUpdate
 .ResetBomberPosition:
     jsr GetRandomBomberPos   ; call subroutine for random bomber position
-
+    inc Score
+    inc Timer
 EndPositionUpdate:           ; fallback for the position update code
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -352,13 +352,6 @@ CheckCollisionP0P1:
     jsr GameOver             ; call GameOver subroutine
 
 EndCollisionCheck:           ; fallback
-    lda BomberYPos
-    clc
-    adc #10
-    cmp JetYPos              ; On the last collision check we check if the Y
-    bpl .ClearColitionFlags  ; position for the bomber is after the player
-    inc Score                ; to increment the score
-.ClearColitionFlags    
     sta CXCLR                ; clear all collision flags before the next frame
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
