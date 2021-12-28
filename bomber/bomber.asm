@@ -335,8 +335,18 @@ UpdateBomberPosition:
     jmp EndPositionUpdate
 .ResetBomberPosition:
     jsr GetRandomBomberPos   ; call subroutine for random bomber position
-    inc Score
-    inc Timer
+    sed
+    lda #1
+    clc
+    adc Score
+    sta Score
+    clc
+    lda #1
+    adc Timer
+    sta Timer
+    cld
+    ;inc Score
+    ;inc Timer
 EndPositionUpdate:           ; fallback for the position update code
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
